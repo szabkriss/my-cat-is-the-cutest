@@ -1,4 +1,5 @@
 import VotePage from './pages/VotePage';
+import MailPage from './pages/MailPage';
 import './App.css';
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
 
   <div className="App">
   
+      <MailPage/>
       <VotePage/>
 
   </div>
