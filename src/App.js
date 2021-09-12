@@ -1,23 +1,49 @@
-import logo from './logo.svg';
+import { auto } from 'async';
+import myCat from './img/myCat.jpg'
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const apiCat = 'https://placekitten.com/453/640'
+  let [myCatCounter, setMyCatCounter] = useState(0)
+  let [apiCatCounter, setApiCatCounter] = useState(0)
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div 
+        className = "header">
+        <h1>Which cat do you find cuter?</h1>
+      </div>
+      <div>
+        <div 
+        className="myCat picture" 
+        style={{
+        backgroundImage: `url(${myCat})`}}
+        onClick={() => 
+          {
+            setMyCatCounter(++myCatCounter)
+            console.log(myCatCounter)
+          }
+        }
         >
-          Learn React
-        </a>
-      </header>
+          <h1>My cat</h1>
+      </div>
+        <h1>or</h1>
+      <div 
+      className="randomCat picture" 
+      style={{
+        backgroundImage: `url(${apiCat})`
+        }}
+      onClick={() => 
+        {
+          setApiCatCounter(++apiCatCounter)
+          console.log(apiCatCounter)
+        }}
+        >
+        <h1>This random kitten from the internet</h1>
+      </div>
+      </div>
     </div>
   );
 }
