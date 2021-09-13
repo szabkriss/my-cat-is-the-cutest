@@ -1,12 +1,10 @@
 import myCat from '../img/myCat.jpg'
 import { useState } from 'react';
+import { getUsers, vote } from '../tools/firebaseFunctions'
 import '../App.css';
 
-function VotePage() {
-  const apiCat = 'https://placekitten.com/453/640'
-  let [myCatCounter, setMyCatCounter] = useState(0)
-  let [apiCatCounter, setApiCatCounter] = useState(0)
-
+function VotePage(props) {
+  let apiCat = 'https://placekitten.com/453/640'
   
   return (
     <div className="VotePage">
@@ -21,8 +19,8 @@ function VotePage() {
         backgroundImage: `url(${myCat})`}}
         onClick={() => 
           {
-            setMyCatCounter(++myCatCounter)
-            console.log(myCatCounter)
+            vote("my-cat", props.onUser)
+            props.onSetUser({...props.onUser, voted: true})
           }
         }
         >
@@ -36,8 +34,8 @@ function VotePage() {
         }}
       onClick={() => 
         {
-          setApiCatCounter(++apiCatCounter)
-          console.log(apiCatCounter)
+            vote("api-cat", props.onUser)
+            props.onSetUser({...props.onUser, voted: true})
         }}
         >
         <h1>This random kitten from the internet</h1>

@@ -14,22 +14,71 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+// USER CLASS & RELATED FUNCTIONS
+
+export class User {
+    constructor(email, uid){
+        this.email = email
+        this.uid = uid
+        this.voted = false
+    }
+}
+
+export function getUsers () {
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users.json`)
+    .then(response => response.json())
+    .then(users => {
+        return Object.keys(users).map((key) => {
+        return users[key];
+    })
+})
+}
+
 function saveUserToDatabase (email, uid, vote) {
-    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users/${email}.json`, {
-        body: JSON.stringify({email: email, uid:uid, vote:vote}),
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`, {
+        body: JSON.stringify({"email": email, "uid":uid, "voted":vote}),
         method: "PUT"
     })
 }
 
 export function registerAndSaveToDatabase (email) {
     const auth = getAuth();
-    createUserWithEmailAndPassword(
+    return createUserWithEmailAndPassword(
         auth,
         email,
         "myCatIsTheCutest"
     )
     .then((userCredentials) => {
-        saveUserToDatabase(email, userCredentials.user.uid, false)
+        return saveUserToDatabase(email, userCredentials.user.uid, false) 
     })
 }
 
+// VOTE FUNCTIONS
+
+function getVotes (cat) {
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/${cat}.json`)
+    .then(response => response.json())
+}
+
+function increaseVotes(cat, count){
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/${cat}.json`, {
+        body: JSON.stringify({votes: count + 1}),
+        method: "PUT"
+    })
+}
+
+function switchUserVotedToTrue(uid){
+    console.log(uid)
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`, {
+        body: JSON.stringify({voted: true}),
+        method: "PATCH"
+    })
+}
+
+export function vote (cat, user){
+    getVotes(cat)
+    .then(count => increaseVotes(cat, count.votes))
+    .then(() => {
+        switchUserVotedToTrue(user.uid)
+    })
+}

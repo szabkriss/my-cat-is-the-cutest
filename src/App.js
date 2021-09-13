@@ -1,18 +1,31 @@
+import { useState, useEffect } from 'react';
 import VotePage from './pages/VotePage';
 import MailPage from './pages/MailPage';
 import './App.css';
+import ChartPage from './pages/ChartPage';
 
 function App() {
 
-  return (
+let [user, setUser] = useState(null)
 
-  <div className="App">
+useEffect(() => {
   
-      <MailPage/>
-      <VotePage/>
+}, [user])
 
-  </div>
-  );
+
+switch (user && !user.voted) {
+  case true:
+    return <VotePage onUser={user} onSetUser={setUser}/>
+    break;
+
+  case false:
+    return <ChartPage/>
+    break;
+    
+  default:
+    return <MailPage onSetUser={setUser}/>
+    break;
+  }
 }
 
 export default App;

@@ -1,3 +1,5 @@
+/* VOTE PAGE */
+
 .VotePage div{
   width: 95%;
   height: 100%;
@@ -16,13 +18,19 @@
   justify-content: center;
   align-items: flex-end;
   text-align: center;
-  
+  box-shadow: 9px 9px #999;
+}
+
+.VotePage .picture:active{
+  box-shadow: 5px 5px #666;
+  transform: translateY(4px)
 }
 
 .header{
   color: white;
   background-color: teal;
   width: 100%;
+  max-width: 900px;
 }
 
 .picture h1{
@@ -30,4 +38,31 @@
   background-color: teal;
   width: 100%;
   opacity: 75%;
+}
+
+/* EMAIL PAGE */
+
+.MailPage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.MailPage div{
+  background-color: teal;
+  color: white;
+  width: 95%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 30px 0px
+}
+
+.MailPage input {
+  margin: 10px 0px
 }

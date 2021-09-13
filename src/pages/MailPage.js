@@ -1,23 +1,43 @@
-import { useState } from 'react';
-import { registerAndSaveToDatabase } from '../tools/firebaseFunctions'
+import { useState, useEffect } from 'react';
+import { registerAndSaveToDatabase, getUsers, User } from '../tools/firebaseFunctions'
+import VotePage from './VotePage';
 
-function RegPage() {
+function MailPage(props) {
 
     const [mail, setMail] = useState("")
+    let letsVoteOnClick
+
+useEffect(() => {
+
+    letsVoteOnClick = (userEmail) => {
+        registerAndSaveToDatabase(userEmail)
+        .then(response => response.json())
+        .then(user => props.onSetUser(user))
+        .catch(() =>{
+            getUsers()
+            .then(users => {
+                props.onSetUser(users.find(user => user.email === userEmail))
+            })
+        })
+
+    }
+})
+        
 
   return (
-    <div className="RegPage">
-        <label>e-mail:</label>
+    <div className="MailPage">
+        <div>
+        <label>E-MAIL</label>
         <input onChange={(e) => setMail(e.target.value)}></input>
         <button 
         onClick={() => {
-            console.log(mail)
-            registerAndSaveToDatabase(mail)
+            letsVoteOnClick(mail)
         }}>
             Let's vote
         </button>
+        </div>
     </div>
   );
 }
 
-export default RegPage;
+export default MailPage;
