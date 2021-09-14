@@ -15,7 +15,8 @@ function VotePage(props) {
         <div 
         className="myCat picture" 
         style={{
-        backgroundImage: `url(${myCat})`}}
+          backgroundImage: `url(${myCat})`
+          }}
         onClick={() => 
           {
             vote("my-cat", props.onUser)

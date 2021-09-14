@@ -91,3 +91,11 @@
   border: 2px solid teal;
 }
 
+/* CHART PAGE */
+
+.ChartPage .TestChart{
+  width: auto;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

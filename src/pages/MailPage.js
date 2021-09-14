@@ -7,7 +7,6 @@ function MailPage(props) {
     let letsVoteOnClick
 
 useEffect(() => {
-
     letsVoteOnClick = (userEmail) => {
         registerAndSaveToDatabase(userEmail)
         .then(response => response.json())

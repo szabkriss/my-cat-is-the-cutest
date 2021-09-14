@@ -55,7 +55,7 @@ export function registerAndSaveToDatabase (email) {
 
 // VOTE FUNCTIONS
 
-function getVotes (cat) {
+export function getVotes (cat) {
     return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/${cat}.json`)
     .then(response => response.json())
 }
@@ -68,7 +68,6 @@ function increaseVotes(cat, count){
 }
 
 function switchUserVotedToTrue(uid){
-    console.log(uid)
     return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json`, {
         body: JSON.stringify({voted: true}),
         method: "PATCH"
