@@ -36,7 +36,6 @@ function ChartPage() {
     return (
       <div className="ChartPage">
         <h1>Chart Page</h1>
-        <h1>{myCatVotes}</h1>
 
         <div className="TestChart"
         style={{

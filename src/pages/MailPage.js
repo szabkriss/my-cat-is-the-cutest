@@ -24,13 +24,19 @@ useEffect(() => {
     <div className="MailPage">
         <div>
         <label>E-MAIL</label>
-        <input onChange={(e) => setMail(e.target.value)}></input>
+
+        <input 
+            type="email"
+            onChange={(e) => setMail(e.target.value)}>
+        </input>
+
         <button 
         onClick={() => {
             letsVoteOnClick(mail)
         }}>
             Let's vote
         </button>
+        
         </div>
     </div>
   );
