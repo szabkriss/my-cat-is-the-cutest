@@ -28,7 +28,6 @@
 }
 
 .header{
-  display: block;
   color: white;
   background-color: teal;
 }
@@ -46,6 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+
 }
 
 .MailPage div{
@@ -93,9 +94,36 @@
 
 /* CHART PAGE */
 
-.ChartPage .TestChart{
+.ChartPage{
+margin-left: auto;
+margin-right: auto;
+border: 7px solid teal;
+border-radius: 15px;
+margin: 10px;
+}
+
+.ChartPage h1 {
+  text-align: center;
+  color: teal;
+}
+
+.ChartPage h3 {
+  text-align: center;
+  color: teal;
+}
+
+.ChartPage .VotesChart{
   width: auto;
   height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.ChartPage .PercentChart{
+  width: auto;
+  height: 400px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
 }

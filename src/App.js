@@ -19,13 +19,15 @@ switch (user && !user.voted) {
     break;
 
   case false:
-    return <ChartPage/>
+    return <ChartPage onUser={user}/>
     break;
     
   default:
     return <MailPage onSetUser={setUser}/>
+
     break;
   }
+
 }
 
 export default App;
