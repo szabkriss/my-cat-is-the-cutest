@@ -1,6 +1,5 @@
 import myCat from '../img/myCat.jpg'
-import { useState } from 'react';
-import { getUsers, vote } from '../tools/firebaseFunctions'
+import { vote } from '../tools/firebaseFunctions'
 import '../App.css';
 
 function VotePage(props) {

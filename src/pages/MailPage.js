@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { registerAndSaveToDatabase, getUsers, User } from '../tools/firebaseFunctions'
-import VotePage from './VotePage';
+import { registerAndSaveToDatabase, getUsers } from '../tools/firebaseFunctions'
 
 function MailPage(props) {
 
@@ -19,11 +18,9 @@ useEffect(() => {
                 props.onSetUser(users.find(user => user.email === userEmail))
             })
         })
-
     }
 })
         
-
   return (
     <div className="MailPage">
         <div>
