@@ -13,21 +13,17 @@ useEffect(() => {
 }, [user])
 
 
-switch (user && !user.voted) {
-  case true:
-    return <VotePage onUser={user} onSetUser={setUser}/>
-    break;
+if(!user){
+  return <MailPage onSetUser={setUser}/>
+}
 
-  case false:
-    return <ChartPage onUser={user}/>
-    break;
-    
-  default:
-    return <MailPage onSetUser={setUser}/>
+return (
+    user.voted ?
 
-    break;
-  }
-
+    <ChartPage onUser={user}/> 
+      : 
+    <VotePage onUser={user} onSetUser={setUser}/>
+  )
 }
 
 export default App;

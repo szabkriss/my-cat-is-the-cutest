@@ -4,10 +4,7 @@ import { registerAndSaveToDatabase, getUsers } from '../tools/firebaseFunctions'
 function MailPage(props) {
 
     const [mail, setMail] = useState("")
-    let letsVoteOnClick
-
-useEffect(() => {
-    letsVoteOnClick = (userEmail) => {
+    let letsVoteOnClick= (userEmail) => {
         registerAndSaveToDatabase(userEmail)
         .then(response => response.json())
         .then(user => props.onSetUser(user))
@@ -18,7 +15,20 @@ useEffect(() => {
             })
         })
     }
-})
+
+// useEffect(() => {
+//     letsVoteOnClick = (userEmail) => {
+//         registerAndSaveToDatabase(userEmail)
+//         .then(response => response.json())
+//         .then(user => props.onSetUser(user))
+//         .catch(() =>{
+//             getUsers()
+//             .then(users => {
+//                 props.onSetUser(users.find(user => user.email === userEmail))
+//             })
+//         })
+//     }
+// })
         
   return (
     <div className="MailPage">
