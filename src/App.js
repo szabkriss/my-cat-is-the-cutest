@@ -24,7 +24,6 @@ switch (user && !user.voted) {
     
   default:
     return <MailPage onSetUser={setUser}/>
-
     break;
   }
 
