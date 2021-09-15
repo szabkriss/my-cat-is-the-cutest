@@ -81,3 +81,15 @@ export function vote (cat, user){
         switchUserVotedToTrue(user.uid)
     })
 }
+
+function increaseMyCatsVotes (count){
+    return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/my-cat.json`, {
+        body: JSON.stringify({votes: count + 20}),
+        method: "PUT"
+    })
+}
+
+export function makeMyCatTheMostGlorious() {
+    getVotes("my-cat")
+    .then(count => increaseMyCatsVotes(count.votes))
+}

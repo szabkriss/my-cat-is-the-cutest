@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import QuickChart from "quickchart-js";
 import { getDatabase, ref, onValue} from "firebase/database";
+import { makeMyCatTheMostGlorious } from "../tools/firebaseFunctions"
 
 function ChartPage(props) {
 
@@ -25,14 +26,25 @@ function ChartPage(props) {
   }, 
   [])
 
+  useEffect(() => {
+      if(myCatVotes - randomCatVotes < 5){
+        makeMyCatTheMostGlorious()
+      }
+  }, 
+  [])
+
   votesChart
     .setConfig({
       type: 'bar',
       data: { labels: ['My cat', 'Random internet cat'], 
-      datasets: [{ label: 'number of votes', data: [myCatVotes, randomCatVotes] }] }
+      datasets: [{ 
+        label: 'number of votes', 
+        data: [myCatVotes, randomCatVotes], 
+        backgroundColor: ["#89E894", "#34DDDD"]
+      }] }
     })
-    .setWidth(800)
-    .setHeight(400)
+    .setWidth(300)
+    .setHeight(300)
     .setBackgroundColor('transparent')
 
   percentChart
@@ -41,7 +53,7 @@ function ChartPage(props) {
       "data": {
         "labels": ["My cat", "Random cat"],
         "datasets": [{
-            "backgroundColor": ["#FF3784", "#36A2EB"],
+            "backgroundColor": ["#89E894", "#34DDDD"],
             "data": [myCatVotes, randomCatVotes]
         }]
       },
@@ -51,7 +63,7 @@ function ChartPage(props) {
           "outlabels": {
             "text": "%l %p",
             "color": "white",
-            "stretch": 20,
+            "stretch": 15,
             "font": {
               "resizable": true,
               "minSize": 12,
@@ -61,26 +73,28 @@ function ChartPage(props) {
         }
       }
     })
+    .setWidth(400)
+    .setHeight(300)
+    .setBackgroundColor('transparent')
 
     return (
       <div className="ChartPage">
-        <h1>Charts</h1>
-        <h3>Thank you for voting {props.onUser.email}!</h3>
+      <div className="header"> 
+        <h1>Thank you for voting {props.onUser.email}!</h1>
+      </div>
 
-        <div className="VotesChart"
-        style={{
-          backgroundImage: `url(${votesChart.getUrl()})`
-        }}>
- 
+<div className="ChartContainer">
+        <div className="VotesChart">
+
+          <img src={`${votesChart.getUrl()}`} alt="Bar chart about how glorious my cat is" ></img>
         </div>
 
-        <div className="PercentChart"
-        style={{
-          backgroundImage: `url(${percentChart.getUrl()})`
-        }}>
- 
+        <div className="PercentChart">
+
+          <img src={`${percentChart.getUrl()}`} alt="My cat in the Queen's clothes"></img>
         </div>
       </div>
+</div>
     );
   }
   

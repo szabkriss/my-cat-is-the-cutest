@@ -1,5 +1,11 @@
 /* VOTE PAGE */
 
+.VotePage{
+  border: 7px solid #34DDDD;
+  border-radius: 15px;
+  margin: 10px;
+}
+
 .VotePage div{
   width: 95%;
   height: 100%;
@@ -9,6 +15,11 @@
   text-align: center;
   border-radius: 10px;
   margin: 20px;
+}
+
+.VotePage h2{
+  font-size: 30px;
+  color: #89E894
 }
 
 .VotePage .picture{
@@ -28,13 +39,20 @@
 }
 
 .header{
+  display: flex;
+  flex-direction: column;
   color: white;
-  background-color: teal;
+  background-color: #89E894;
+  margin-bottom: 20px;
+}
+
+.header *{
+  margin: 10px;
 }
 
 .picture h1{
   color: white;
-  background-color: teal;
+  background-color: #34DDDD;
   width: 100%;
   opacity: 75%;
 }
@@ -51,8 +69,8 @@
 
 .MailPage div{
   
-  border: 5px solid teal;
-  color: teal;
+  border: 7px solid #34DDDD;
+  color: #89E894;
   font-weight: 700;
   width: 95%;
   max-width: 500px;
@@ -72,8 +90,8 @@
 }
 
 .MailPage button{
-  background-color: teal;
-  border: 2px solid teal;
+  background-color: #89E894;
+  border: 2px solid #89E894;
   border-radius: 5px;
   color: white;
   padding: 16px 32px;
@@ -88,8 +106,8 @@
 
 .MailPage button:hover{
   background-color: white;
-  color: teal;
-  border: 2px solid teal;
+  color: #34DDDD;
+  border: 2px solid #34DDDD;
 }
 
 /* CHART PAGE */
@@ -97,33 +115,26 @@
 .ChartPage{
 margin-left: auto;
 margin-right: auto;
-border: 7px solid teal;
+border: 7px solid #34DDDD;
 border-radius: 15px;
 margin: 10px;
 }
 
-.ChartPage h1 {
-  text-align: center;
-  color: teal;
+.ChartContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.ChartPage h3 {
-  text-align: center;
-  color: teal;
+.ChartPage div{
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 
-.ChartPage .VotesChart{
-  width: auto;
-  height: 400px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: center;
-}
-
-.ChartPage .PercentChart{
-  width: auto;
-  height: 400px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: center;
+.ChartPage div img{
+  width: 80%;
+  height: auto;
 }
