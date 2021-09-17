@@ -11,7 +11,7 @@ function ChartPage(props) {
   
   let votesChart = new QuickChart()
   let percentChart = new QuickChart()
-  let [myCatVotes, setMyCatVotes] = useState(5)
+  let [myCatVotes, setMyCatVotes] = useState(0)
   let [randomCatVotes, setRandomCatVotes] = useState(0)
 
   useEffect(() => {
@@ -27,7 +27,10 @@ function ChartPage(props) {
   [])
 
   useEffect(() => {
-      if((myCatVotes - randomCatVotes) < 5){
+      if(myCatVotes == 0 && randomCatVotes == 0){
+        return (<h1>loading</h1>)
+      }
+      else if((myCatVotes - randomCatVotes) < 5){
         makeMyCatTheMostGlorious()
       }
   }, 

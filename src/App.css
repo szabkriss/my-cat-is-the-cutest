@@ -59,7 +59,7 @@
 
 /* EMAIL PAGE */
 
-.MailPage{
+.LoginPage{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +67,7 @@
 
 }
 
-.MailPage div{
+.LoginPage div{
   
   border: 7px solid #34DDDD;
   color: #89E894;
@@ -84,12 +84,12 @@
   padding: 30px 0px
 }
 
-.MailPage input {
+.LoginPage input {
   margin: 10px 0px;
   height: 20px;
 }
 
-.MailPage button{
+.LoginPage button{
   background-color: #89E894;
   border: 2px solid #89E894;
   border-radius: 5px;
@@ -104,7 +104,7 @@
   cursor: pointer;
 }
 
-.MailPage button:hover{
+.LoginPage button:hover{
   background-color: white;
   color: #34DDDD;
   border: 2px solid #34DDDD;

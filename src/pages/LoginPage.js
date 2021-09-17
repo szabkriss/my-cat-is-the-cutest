@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { registerAndSaveToDatabase, getUsers } from '../tools/firebaseFunctions'
 
-function MailPage(props) {
+function LoginPage(props) {
 
     const [mail, setMail] = useState("")
+    
     let letsVoteOnClick= (userEmail) => {
         registerAndSaveToDatabase(userEmail)
         .then(response => response.json())
@@ -15,23 +16,9 @@ function MailPage(props) {
             })
         })
     }
-
-// useEffect(() => {
-//     letsVoteOnClick = (userEmail) => {
-//         registerAndSaveToDatabase(userEmail)
-//         .then(response => response.json())
-//         .then(user => props.onSetUser(user))
-//         .catch(() =>{
-//             getUsers()
-//             .then(users => {
-//                 props.onSetUser(users.find(user => user.email === userEmail))
-//             })
-//         })
-//     }
-// })
-        
+   
   return (
-    <div className="MailPage">
+    <div className="LoginPage">
         <div>
         <label>E-MAIL</label>
 
@@ -52,4 +39,4 @@ function MailPage(props) {
   );
 }
 
-export default MailPage;
+export default LoginPage;

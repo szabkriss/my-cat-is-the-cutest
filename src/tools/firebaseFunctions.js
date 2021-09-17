@@ -14,15 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// USER CLASS & RELATED FUNCTIONS
-
-export class User {
-    constructor(email, uid){
-        this.email = email
-        this.uid = uid
-        this.voted = false
-    }
-}
+// USER RELATED FUNCTIONS
 
 export function getUsers () {
     return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/users.json`)
@@ -84,12 +76,13 @@ export function vote (cat, user){
 
 function increaseMyCatsVotes (count){
     return fetch(`https://my-cat-is-the-cutest-default-rtdb.europe-west1.firebasedatabase.app/my-cat.json`, {
-        body: JSON.stringify({votes: count + 20}),
+        body: JSON.stringify({votes: count + 5}),
         method: "PUT"
     })
 }
 
 export function makeMyCatTheMostGlorious() {
     getVotes("my-cat")
+    getVotes("api-cat")
     .then(count => increaseMyCatsVotes(count.votes))
 }

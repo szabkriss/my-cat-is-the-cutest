@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import VotePage from './pages/VotePage';
-import MailPage from './pages/MailPage';
+import LoginPage from './pages/LoginPage';
 import './App.css';
 import ChartPage from './pages/ChartPage';
 
@@ -14,7 +14,7 @@ useEffect(() => {
 
 
 if(!user){
-  return <MailPage onSetUser={setUser}/>
+  return <LoginPage onSetUser={setUser}/>
 }
 
 return (
