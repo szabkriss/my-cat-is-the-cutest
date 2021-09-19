@@ -57,7 +57,7 @@
   opacity: 75%;
 }
 
-/* EMAIL PAGE */
+/* LOGIN PAGE */
 
 .LoginPage{
   display: flex;
@@ -85,8 +85,19 @@
 }
 
 .LoginPage input {
-  margin: 10px 0px;
-  height: 20px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #89E894;
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  
+}
+
+.LoginPage input:focus {
+  border: 3px solid #34DDDD;
 }
 
 .LoginPage button{
