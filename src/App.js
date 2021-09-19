@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import VotePage from './pages/VotePage';
-import MailPage from './pages/MailPage';
+import LoginPage from './pages/LoginPage';
 import './App.css';
 import ChartPage from './pages/ChartPage';
 
@@ -13,20 +13,17 @@ useEffect(() => {
 }, [user])
 
 
-switch (user && !user.voted) {
-  case true:
-    return <VotePage onUser={user} onSetUser={setUser}/>
-    break;
+if(!user){
+  return <LoginPage onSetUser={setUser}/>
+}
 
-  case false:
-    return <ChartPage onUser={user}/>
-    break;
-    
-  default:
-    return <MailPage onSetUser={setUser}/>
-    break;
-  }
+return (
+    user.voted ?
 
+    <ChartPage onUser={user}/> 
+      : 
+    <VotePage onUser={user} onSetUser={setUser}/>
+  )
 }
 
 export default App;

@@ -9,7 +9,8 @@ function VotePage(props) {
     <div className="VotePage">
       <div 
         className = "header">
-        <h1>Which cat do you find cuter?</h1>
+        <h1>Which cat do you find more glorious?</h1>
+        <h3>I'm sure it's mine but I'll let you choose.</h3>
       </div>
       <div>
         <div 
@@ -26,7 +27,7 @@ function VotePage(props) {
         >
           <h1>My cat</h1>
       </div>
-        <h1>or</h1>
+        <h2>or</h2>
       <div 
       className="randomCat picture" 
       style={{
